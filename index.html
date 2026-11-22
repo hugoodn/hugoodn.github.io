@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hugo · Le check de ta fiche Google</title><meta name="description" content="Paysagiste : en 2 minutes, vois ce qui fait que le client t'appelle, ou appelle le suivant."><meta name="theme-color" content="#F7F5F0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;background:#F7F5F0}#sc{--bg:#F7F5F0;--ink:#1A1A1A;--soft:#55594F;--green:#1F4D3A;--green-dark:#163829;--green-tint:#E7EFE9;--line:#E2DDD1;--card:#FFFFFF;--warn:#9A3B1E;
+  background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh;min-height:100dvh;width:100%;overflow-x:hidden}
+#sc *,#sc *::before,#sc *::after{box-sizing:border-box}
+#sc h1,#sc h2,#sc h3,#sc p,#sc ul,#sc ol{margin:0;padding:0}
+#sc ul,#sc ol{list-style:none}
+#sc button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#sc a{color:var(--green);text-underline-offset:3px}
+#sc .wrap{max-width:640px;margin:0 auto;padding:0 20px}
+#sc .top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+#sc .brand{font-weight:800;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+#sc .brand i{width:9px;height:9px;border-radius:50%;background:var(--green);display:inline-block}
+#sc .back{background:none;border:0;padding:8px 0;font-size:15px;color:var(--soft);font-weight:600}
+#sc .back[hidden]{display:none}
+#sc .screen{display:none;padding:12px 0 56px}
+#sc .screen.on{display:block;animation:sc-in .28s ease-out}
+@keyframes sc-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#sc .screen.on{animation:none}}
+#sc .chip{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--green);background:var(--green-tint);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+#sc h1{font-size:clamp(30px,8.2vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.025em}
+#sc h2{font-size:clamp(25px,6.6vw,32px);line-height:1.18;font-weight:800;letter-spacing:-.02em}
+#sc h3{font-size:19px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+#sc .lead{font-size:18px;color:var(--soft);margin-top:16px}
+#sc .lead strong{color:var(--ink);font-weight:700}
+#sc .accent{color:var(--green)}
+#sc .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:14px 22px;border:0;border-radius:14px;background:var(--green);color:#fff;font-size:18px;font-weight:700;letter-spacing:-.005em;box-shadow:0 1px 2px rgba(22,56,41,.18),0 6px 16px rgba(22,56,41,.10);transition:background .15s,transform .1s}
+#sc .btn:hover{background:var(--green-dark)}
+#sc .btn:active{transform:scale(.99)}
+#sc .btn:focus-visible,#sc .opt:focus-visible,#sc input:focus-visible,#sc .link:focus-visible{outline:3px solid #8FB7A2;outline-offset:2px}
+#sc [tabindex="-1"]:focus{outline:none}
+#sc .btn[disabled]{opacity:.6;cursor:wait}
+#sc .micro{font-size:14px;color:var(--soft);text-align:center;margin-top:12px}
+#sc .cta{margin-top:28px}
+#sc .sec{margin-top:56px}
+#sc .sec>h2{margin-bottom:8px}
+#sc .sec>.lead{margin-top:6px}
+#sc .stats{display:grid;gap:12px;margin-top:22px}
+#sc .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+#sc .stat b{display:block;font-size:30px;line-height:1.1;font-weight:800;color:var(--green);letter-spacing:-.02em}
+#sc .stat span{display:block;margin-top:6px;color:var(--soft);font-size:16px}
+#sc .quote{margin-top:26px;font-size:22px;line-height:1.35;font-weight:800;letter-spacing:-.015em;border-left:4px solid var(--green);padding:4px 0 4px 16px}
+#sc .steps{margin-top:22px;display:grid;gap:12px;counter-reset:st}
+#sc .steps li{counter-increment:st;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 18px 62px;position:relative}
+#sc .steps li::before{content:counter(st);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+#sc .steps p,#sc .card p{color:var(--soft);margin-top:4px;font-size:16px}
+#sc .ticks{margin-top:20px;display:grid;gap:10px}
+#sc .ticks li{padding-left:32px;position:relative;font-size:17px}
+#sc .ticks li::before{content:"";position:absolute;left:2px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--green-tint)}
+#sc .ticks li::after{content:"";position:absolute;left:8px;top:9px;width:6px;height:9px;border:solid var(--green);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+#sc .honest{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;color:var(--soft);font-size:16px}
+#sc .honest strong{color:var(--ink)}
+#sc .final{margin-top:56px;background:var(--green);color:#fff;border-radius:20px;padding:28px 22px}
+#sc .final h2{color:#fff}
+#sc .final p{color:#D7E6DD;margin-top:10px}
+#sc .final .btn{background:#fff;color:var(--green);margin-top:22px;box-shadow:none}
+#sc .final .btn:hover{background:#F0F4F1}
+#sc .foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between}
+#sc .link{background:none;border:0;padding:0;color:var(--soft);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+#sc .progress{height:6px;background:#E6E2D8;border-radius:99px;overflow:hidden;margin:4px 0 22px}
+#sc .progress i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .3s ease}
+#sc .qcount{font-size:14px;font-weight:700;color:var(--green);margin-bottom:8px}
+#sc .qsub{color:var(--soft);margin-top:8px;font-size:16px}
+#sc .opts{display:grid;gap:10px;margin-top:22px}
+#sc .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;font-size:17px;font-weight:600;min-height:58px;transition:border-color .15s,background .15s}
+#sc .opt::before{content:"";flex:0 0 20px;height:20px;border-radius:50%;border:2px solid #C9C3B5;background:#fff;transition:all .15s}
+#sc .opt:hover{border-color:#B9C9BF}
+#sc .opt.sel{border-color:var(--green);background:var(--green-tint)}
+#sc .opt.sel::before{border-color:var(--green);background:var(--green);box-shadow:inset 0 0 0 4px #fff}
+#sc .calc{text-align:center;padding-top:70px}
+#sc .spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--green-tint);border-top-color:var(--green);margin:0 auto 22px;animation:sc-spin .8s linear infinite}
+@keyframes sc-spin{to{transform:rotate(360deg)}}
+#sc .calc p{color:var(--soft);margin-top:8px}
+#sc .verdict{margin-top:14px;font-size:18px;color:var(--soft)}
+#sc .verdict strong{color:var(--ink)}
+#sc .cards{display:grid;gap:12px;margin-top:22px}
+#sc .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+#sc .card .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+#sc .card.alert{border-left:4px solid var(--green)}
+#sc .card .calcline{margin-top:10px;font-weight:700;color:var(--ink);font-size:16px}
+#sc form{margin-top:22px;display:grid;gap:16px}
+#sc label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+#sc label .opt-l{font-weight:500;color:var(--soft)}
+#sc input[type=text],#sc input[type=tel],#sc input[type=email]{width:100%;height:56px;border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:0 16px;font:inherit;font-size:17px;color:var(--ink);-webkit-appearance:none;appearance:none}
+#sc input:focus{border-color:var(--green);outline:none}
+#sc .err{display:none;color:var(--warn);font-size:14px;margin-top:6px;font-weight:600}
+#sc .field.bad input{border-color:var(--warn)}
+#sc .field.bad .err{display:block}
+#sc .consent{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--soft);font-weight:500;margin:0}
+#sc .consent input{flex:0 0 22px;width:22px;height:22px;margin-top:1px;accent-color:var(--green)}
+#sc .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+#sc .done{width:64px;height:64px;border-radius:50%;background:var(--green);margin:8px 0 22px;position:relative}
+#sc .done::after{content:"";position:absolute;left:23px;top:15px;width:15px;height:27px;border:solid #fff;border-width:0 5px 5px 0;transform:rotate(45deg)}
+#sc .msgbox{margin-top:16px;background:var(--card);border:1px dashed #BFB8A8;border-radius:14px;padding:16px;font-size:16px}
+#sc .copy{margin-top:12px;background:var(--green-tint);color:var(--green);border:0;border-radius:10px;padding:12px 16px;font-weight:700;font-size:15px}
+#sc .modal{position:fixed;inset:0;background:rgba(26,26,26,.45);display:none;align-items:flex-end;justify-content:center;z-index:9999;padding:0}
+#sc .modal.on{display:flex}
+#sc .sheet{background:var(--bg);width:100%;max-width:640px;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:22px 20px 32px;-webkit-overflow-scrolling:touch}
+#sc .sheet h3{margin:18px 0 6px}
+#sc .sheet p{color:var(--soft);font-size:15px}
+#sc .sheet .close{float:right;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-weight:700;font-size:14px}
+#sc .consentbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:16px 20px;z-index:9998;display:none;font-size:14px}
+#sc .consentbar.on{display:block}
+#sc .consentbar .row{max-width:640px;margin:0 auto}
+#sc .consentbar .acts{display:flex;gap:10px;margin-top:10px}
+#sc .consentbar button{flex:1;border-radius:10px;padding:12px;font-weight:700;border:0}
+#sc .consentbar .yes{background:#fff;color:var(--ink)}
+#sc .consentbar .no{background:transparent;color:#fff;border:1px solid #777}
+@media (min-width:720px){#sc .stats{grid-template-columns:repeat(3,1fr)}#sc .stat b{font-size:28px}#sc .modal{align-items:center}#sc .sheet{border-radius:20px}}
+#sc h1,#sc h2{font-family:"Newsreader",Georgia,serif;font-weight:600;letter-spacing:-.015em}
+#sc h1 em{font-style:italic;color:var(--green)}
+#sc .brand{gap:12px;font-weight:400}
+#sc .brand span{display:flex;flex-direction:column;line-height:1.2}
+#sc .brand b{font-size:16px;font-weight:800}
+#sc .brand small{font-size:13px;color:var(--soft)}
+#sc .av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:0 0 44px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Newsreader",Georgia,serif;font-size:20px}
+#sc .quote{font-family:"Newsreader",Georgia,serif;font-weight:600}
+#sc .sec .quote+.lead{margin-top:18px}
+#sc .me h2{margin-bottom:4px}
+#sc .next{margin-top:22px;background:var(--green);color:#fff;border-radius:18px;padding:20px}
+#sc .next h3{color:#fff}
+#sc .next p{color:#D7E6DD;margin-top:6px;font-size:16px}
+#sc .said{margin-top:12px;font-size:16px;color:var(--soft);font-style:italic}
+#sc .chip{margin-bottom:14px}
+#sc h1{font-size:clamp(33px,9.2vw,48px);line-height:1.1}
+#sc h2{font-size:clamp(28px,7.4vw,36px)}
+#sc .quote{font-size:24px}
+#sc .wrap{padding:0 16px}
+#sc .opt.multi::before{border-radius:6px}
+#sc .opt.multi.sel::before{box-shadow:none;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M5 10.5l3.2 3L15 6.5%27 fill=%27none%27 stroke=%27white%27 stroke-width=%272.4%27/%3E%3C/svg%3E") center/16px no-repeat}
+#sc .next-q{margin-top:18px}
+#sc .next-q[hidden]{display:none}
+#sc .next-q[disabled]{opacity:.45;cursor:default}
+</style></head>
+<body><div id="sc">
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="av" aria-hidden="true">H</span><span><b>Hugo</b><small>Je remplis l'agenda des paysagistes</small></span></div>
+    <button type="button" class="back" id="sc-back" hidden>← Retour</button>
+  </header>
+
+  <main aria-live="polite">
+
+  <section class="screen on" id="s-accueil" data-screen="accueil">
+    <span class="chip">Le check de ta fiche Google · 2 min</span>
+    <h1 tabindex="-1">Quand quelqu'un de ta commune cherche un paysagiste, <em>il t'appelle ou il appelle le suivant ?</em></h1>
+    <p class="lead">8 questions. Tu vois tout de suite ce que voit ton client quand il tombe sur ta fiche et je la regarde aussi moi-même.</p>
+    <div class="cta">
+      <button type="button" class="btn" data-go="quiz">Faire le check de ma fiche</button>
+      <p class="micro">Gratuit · sans engagement · pas de démarchage</p>
+    </div>
+
+    <div class="sec">
+      <p class="quote">Le client ne choisit pas le meilleur paysagiste. Il choisit celui qui le rassure le plus..</p>
+      <p class="lead">Beaucoup de paysagistes ont de très beaux chantiers et moins de 10 avis sur Google. Et le client ne voit que les avis.</p>
+    </div>
+
+    <div class="sec me">
+      <h2>Qui je suis</h2>
+      <p class="lead">Je ne suis pas paysagiste. Mon métier c'est que les gens autour de chez toi te trouvent, te fassent confiance et t'appellent. Ta fiche Google, tes avis et tes chantiers montrés au bon endroit.</p>
+    </div>
+  </section>
+
+  <section class="screen" id="s-quiz" data-screen="quiz">
+    <p class="qcount" id="sc-qcount"></p>
+    <div class="progress" aria-hidden="true"><i id="sc-bar"></i></div>
+    <h2 tabindex="-1" id="sc-qtitle"></h2>
+    <p class="qsub" id="sc-qsub"></p>
+    <div class="opts" id="sc-opts" role="group"></div>
+    <button type="button" class="btn next-q" id="sc-nextq" hidden>Suivant</button>
+  </section>
+
+  <section class="screen" id="s-form" data-screen="form">
+    <h2 tabindex="-1">Ton résultat est prêt..</h2>
+    <p class="lead">Dis-moi qui tu es : en plus du résultat je regarde moi-même tout ce que voit ton client quand il te cherche.</p>
+    <form id="sc-form" novalidate>
+      <div class="field" data-f="prenom"><label for="sc-prenom">Prénom</label><input type="text" id="sc-prenom" name="prenom" autocomplete="given-name" required><p class="err">Indique ton prénom.</p></div>
+      <div class="field" data-f="entreprise"><label for="sc-entreprise">Nom de ton entreprise</label><input type="text" id="sc-entreprise" name="entreprise" autocomplete="organization" required><p class="err">Indique le nom de ton entreprise, pour que je trouve ta fiche.</p></div>
+      <div class="field" data-f="ville"><label for="sc-ville">Ta ville</label><input type="text" id="sc-ville" name="ville" autocomplete="address-level2" required><p class="err">Indique ta ville.</p></div>
+      <div class="field" data-f="telephone"><label for="sc-tel">Téléphone</label><input type="tel" id="sc-tel" name="telephone" autocomplete="tel" inputmode="tel" required><p class="err">Vérifie ton numéro (10 chiffres, ou avec l'indicatif +33).</p></div>
+      <div class="hp" aria-hidden="true"><label for="sc-site">Site</label><input type="text" id="sc-site" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="field" data-f="consent"><label class="consent"><input type="checkbox" id="sc-consent" name="consent" value="oui"><span>J'accepte que Hugo m'appelle au sujet de ma fiche. Mes infos servent uniquement à ça, elles ne sont ni partagées ni revendues. <button type="button" class="link" data-modal="conf">Confidentialité</button></span></label><p class="err">Coche la case pour voir ton résultat.</p></div>
+      <button type="submit" class="btn" id="sc-submit">Voir mon résultat</button>
+      <p class="micro">Je t'appelle une fois pour te dire ce que je vois. Pas de relance sans fin.</p>
+    </form>
+  </section>
+
+  <section class="screen" id="s-resultat" data-screen="resultat">
+    <h2 tabindex="-1" id="sc-restitle"></h2>
+    <p class="said" id="sc-said"></p>
+    <p class="verdict" id="sc-verdict"></p>
+    <div class="cards" id="sc-cards"></div>
+    <div class="next">
+      <h3>La suite</h3>
+      <p id="sc-next"></p>
+    </div>
+    <div class="sec">
+      <h3>En attendant : plus d'avis sans y passer tes soirées</h3>
+      <p class="qsub">Le meilleur moment c'est à la fin du chantier, sur place, quand ton client découvre son jardin. Tu es là : demande-lui directement et envoie-lui le lien par SMS dans la foulée.</p>
+      <p class="qsub">Pour tes anciens chantiers : de temps en temps envoie ce message à un client content qui n'a pas encore laissé d'avis. Ton lien est sur ta fiche Google dans « Demander des avis ».</p>
+      <div class="msgbox" id="sc-msg">Bonjour [prénom], c'est [ton prénom] de [ton entreprise]. J'espère que vous profitez bien de [votre terrasse, votre jardin…]. On avait vraiment pris plaisir à travailler chez vous. Si vous avez deux minutes, un petit avis sur Google nous aiderait beaucoup à nous faire connaître : [lien] Merci encore et belle journée !</div>
+      <button type="button" class="copy" id="sc-copy">Copier le message</button>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>Hugo Donné</span>
+    <span><button type="button" class="link" data-modal="ml">Mentions légales</button> · <button type="button" class="link" data-modal="conf">Confidentialité</button></span>
+  </footer>
+</div>
+
+<div class="modal" id="m-ml" role="dialog" aria-modal="true" aria-labelledby="m-ml-t"><div class="sheet">
+  <button type="button" class="close" data-close>Fermer</button>
+  <h2 id="m-ml-t">Mentions légales</h2>
+  <h3>Éditeur</h3><p>Hugo Donné, entrepreneur individuel (EI), SIRET en cours d'immatriculation, Nice (06). Contact : hugodonne.pro@gmail.com. Directeur de la publication : Hugo Donné.</p>
+  <h3>Hébergeur</h3><p>GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</p>
+  <h3>TVA</h3><p>TVA non applicable, article 293 B du CGI.</p>
+</div></div>
+
+<div class="modal" id="m-conf" role="dialog" aria-modal="true" aria-labelledby="m-conf-t"><div class="sheet">
+  <button type="button" class="close" data-close>Fermer</button>
+  <h2 id="m-conf-t">Confidentialité</h2>
+  <p>Dernière mise à jour : novembre 2026.</p>
+  <h3>Responsable</h3><p>Hugo Donné EI, SIRET en cours d'immatriculation, hugodonne.pro@gmail.com.</p>
+  <h3>Données</h3><p>Prénom, nom de l'entreprise, ville, téléphone et tes réponses au questionnaire. La page compte aussi les visites et les étapes du questionnaire de façon anonyme, sans cookie, pour savoir où elle peut être plus claire.</p>
+  <h3>Pourquoi</h3><p>Regarder ta fiche Google et te contacter pour t'en parler. Base légale : ton consentement, donné en cochant la case.</p>
+  <h3>Destinataires</h3><p>Uniquement moi et les outils qui font tourner la page : l'hébergeur, Google (tableur de suivi) et Telegram (alerte de nouvelle demande). Rien n'est vendu ni partagé.</p>
+  <h3>Durée</h3><p>3 ans après notre dernier échange, puis suppression. Si on travaille ensemble : factures et contrats gardés 10 ans.</p>
+  <h3>Tes droits</h3><p>Accès, rectification, effacement, opposition, à tout moment et gratuitement : écris à hugodonne.pro@gmail.com ou dis-le-moi au téléphone. Tu peux aussi saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+</div></div>
+</div>
+<script>(function(){
+var CONFIG={WEBHOOK_URL:"",DELAI:"dans la journée"};
+var root=document.getElementById("sc");if(!root)return;
+var $=function(s){return root.querySelector(s)};var $$=function(s){return Array.prototype.slice.call(root.querySelectorAll(s))};
+
+var Q=[
+ {id:"activite",t:"Tu fais surtout…",o:[["creation","De la création et de l'aménagement"],["tout","Un peu de tout : création et entretien"],["entretien","Surtout de l'entretien"],["elagage","Surtout de l'élagage"]]},
+ {id:"chantier",t:"Ton chantier moyen à peu près ?",s:"Un chantier typique, pas le plus gros.",o:[["moins1500","Moins de 1 500 €"],["1500_3000","De 1 500 à 3 000 €"],["3000_6000","De 3 000 à 6 000 €"],["plus6000","Plus de 6 000 €"]]},
+ {id:"avis",t:"Combien d'avis sur ta fiche Google ?",o:[["moins10","Moins de 10"],["10_30","Entre 10 et 30"],["30_80","Entre 30 et 80"],["plus80","Plus de 80"],["sansfiche","Je n'ai pas de fiche Google"],["nsp","Je ne sais pas"]]},
+ {id:"note",t:"Et ta note Google ?",o:[["48","4,8 ou plus"],["45","Entre 4,5 et 4,7"],["40","Entre 4 et 4,4"],["moins4","Moins de 4"],["nsp","Je ne sais pas"]],skip:function(a){return a.avis==="sansfiche"}},
+ {id:"dernier",t:"Ton dernier avis date de…",o:[["mois","Ce mois-ci"],["quelques","Il y a quelques mois"],["an","Plus d'un an"],["nsp","Je ne sais pas"]],skip:function(a){return a.avis==="sansfiche"}},
+ {id:"photos",t:"Sur ta fiche il y a des photos de tes chantiers ?",o:[["oui","Oui des récentes"],["anciennes","Quelques-unes plutôt anciennes"],["non","Presque pas ou juste le logo"],["nsp","Je ne sais pas"]],skip:function(a){return a.avis==="sansfiche"}},
+ {id:"source",multi:true,t:"Tes nouveaux clients viennent surtout…",s:"Plusieurs réponses possibles.",o:[["bao","Du bouche-à-oreille"],["google","De Google"],["reseaux","Des réseaux sociaux"],["plateformes","De plateformes de mise en relation"],["pub","De ma publicité"]]},
+ {id:"agenda",t:"En ce moment ton agenda…",o:[["complet","Complet pour plusieurs mois"],["trous","Ça va mais avec des trous"],["creux","Des mois creux qui reviennent"],["vide","Pas assez rempli"]]}
+];
+var LBL={};Q.forEach(function(q){LBL[q.id]={};q.o.forEach(function(o){LBL[q.id][o[0]]=o[1]})});
+var A={},qi=0,hist=[],sent=false,cur="accueil",prenom="";
+
+// ---- suivi anonyme (sans cookie) ----
+var params=new URLSearchParams(location.search);
+var SRC=(params.get("utm_source")||params.get("s")||(/Instagram/i.test(navigator.userAgent)?"instagram":(document.referrer?(function(){try{return new URL(document.referrer).hostname}catch(e){return "ref"}})():"direct"))).slice(0,40);
+var SID;try{SID=sessionStorage.getItem("sc_sid");if(!SID){SID=Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);sessionStorage.setItem("sc_sid",SID)}}catch(e){SID=Math.random().toString(36).slice(2,12)}
+var DEV=/Mobi|Android|iPhone/i.test(navigator.userAgent)?"mobile":"ordi";
+var hooked=function(){return CONFIG.WEBHOOK_URL&&CONFIG.WEBHOOK_URL.indexOf("{{")!==0};
+var once={};
+function ev(event,etape,valeur,extra){
+  var k=event+"|"+(etape||"");if(event!=="answer"&&once[k])return;once[k]=1;
+  var d={type:"event",session:SID,event:event,etape:etape||"",valeur:valeur||"",source:SRC,appareil:DEV};
+  if(extra)for(var x in extra)d[x]=extra[x];
+  if(!hooked()){console.log("[SC]",d);return}
+  var body=new URLSearchParams(d);
+  try{if(navigator.sendBeacon&&navigator.sendBeacon(CONFIG.WEBHOOK_URL,body))return}catch(e){}
+  try{fetch(CONFIG.WEBHOOK_URL,{method:"POST",mode:"no-cors",keepalive:true,body:body})}catch(e){}
+}
+
+function visibleQ(){return Q.filter(function(q){return !(q.skip&&q.skip(A))})}
+function show(name){
+  $$(".screen").forEach(function(s){s.classList.toggle("on",s.getAttribute("data-screen")===name)});
+  $("#sc-back").hidden=(name==="accueil"||name==="resultat");
+  var top=root.getBoundingClientRect().top+window.pageYOffset;window.scrollTo(0,Math.max(0,top-4));
+  var h=$("#s-"+name+" h2[tabindex], #s-"+name+" h1[tabindex]");if(h){try{h.focus({preventScroll:true})}catch(e){}}
+  cur=name;
+}
+function renderQ(){
+  var V=visibleQ(),q=V[qi];$("#sc-qcount").textContent="Question "+(qi+1)+" sur "+V.length;
+  $("#sc-bar").style.width=Math.round(qi/V.length*100)+"%";
+  $("#sc-qtitle").textContent=q.t;var sub=$("#sc-qsub");sub.textContent=q.s||"";sub.style.display=q.s?"block":"none";
+  var box=$("#sc-opts");box.innerHTML="";box.setAttribute("aria-label",q.t);
+  var nx=$("#sc-nextq");nx.hidden=!q.multi;
+  if(q.multi){if(!Array.isArray(A[q.id]))A[q.id]=[];nx.disabled=!A[q.id].length}
+  q.o.forEach(function(o){var on=q.multi?A[q.id].indexOf(o[0])>=0:A[q.id]===o[0];var b=document.createElement("button");b.type="button";b.className="opt"+(q.multi?" multi":"")+(on?" sel":"");b.textContent=o[1];b.setAttribute("aria-pressed",on?"true":"false");
+    b.addEventListener("click",function(){if(q.multi)toggle(q.id,o[0],b);else pick(q.id,o[0],b)});box.appendChild(b)});
+}
+function toggle(id,v,b){var arr=A[id],i=arr.indexOf(v);if(i>=0)arr.splice(i,1);else arr.push(v);var on=i<0;b.classList.toggle("sel",on);b.setAttribute("aria-pressed",on?"true":"false");$("#sc-nextq").disabled=!arr.length}
+function advance(){hist.push("quiz:"+qi);var V=visibleQ();
+  if(qi<V.length-1){qi++;renderQ();show("quiz")}
+  else{$("#sc-bar").style.width="100%";show("form");ev("form_view")}}
+
+var picking=false;
+function pick(id,v,b){if(picking)return;picking=true;A[id]=v;
+  $$("#sc-opts .opt").forEach(function(x){x.classList.remove("sel");x.setAttribute("aria-pressed","false")});b.classList.add("sel");b.setAttribute("aria-pressed","true");
+  ev("answer",id,v);
+  setTimeout(function(){picking=false;advance()},220)}
+$("#sc-nextq").addEventListener("click",function(){var q=visibleQ()[qi];if(!A[q.id]||!A[q.id].length)return;ev("answer",q.id,A[q.id].join("+"));advance()});
+
+function fit(a){
+  if(a.activite==="entretien"||a.activite==="elagage")return (a.chantier==="moins1500"||a.chantier==="1500_3000")?"non":"partiel";
+  if(a.chantier==="moins1500")return "non";
+  return "oui";
+}
+function cards(a){
+  var c=[];
+  var av={moins10:["Tes avis","C'est ton gain le plus rapide. Face à un paysagiste qui en a 40 le client ne connaît aucun de vous deux. Il appelle celui qui a l'air le plus sûr.",1],
+    "10_30":["Tes avis","Tu as une base : la moitié des paysagistes que j'ai regardés ont 10 avis ou moins. Maintenant ce qui compte c'est d'en recevoir régulièrement.",0],
+    "30_80":["Tes avis","Belle base. C'est mieux que les trois quarts des paysagistes que j'ai regardés et le prochain gain vient de la régularité.",0],
+    plus80:["Tes avis","Tes avis sont un vrai atout. Le prochain gain se joue sûrement ailleurs : tes photos, ta zone ou le rappel des demandes.",0],
+    sansfiche:["Ta fiche Google","Sans fiche celui qui tape « paysagiste » et le nom de sa commune ne te voit même pas. C'est la première chose à créer et c'est gratuit.",1],
+    nsp:["Ta fiche Google","Je regarderai pour toi : tes avis, ta note, tes photos et ce que voit le client à côté des paysagistes de ta commune.",0]}[a.avis];
+  if(av)c.push(av);
+  var no={moins4:["Ta note","Sous 4 étoiles beaucoup de clients ne cliquent même pas sur ta fiche. Ça se rattrape : un avis à chaque fin de chantier, une réponse calme à chaque mauvais avis, et regarder ce qui revient dans les critiques (délais, propreté, suivi du chantier).",1],
+    "40":["Ta note","Correct mais à côté d'un paysagiste à 4,8 le client hésite. Ce qui la remonte surtout : plus d'avis de clients contents. Et une réponse à chaque avis rassure celui qui lit.",1],
+    "45":["Ta note","Bonne note. Avec plus d'avis récents elle pèsera encore plus face aux autres.",0],
+    "48":["Ta note","Très bonne note, c'est un vrai argument. Il faut juste que le client la voie, donc assez d'avis et une fiche complète.",0]}[a.note];
+  if(no)c.push(no);
+  var de={an:["Ton dernier avis","Quand le dernier avis date de plus d'un an le client se demande si tu travailles encore.",1],
+    quelques:["Ton dernier avis","Pas mal. L'idéal c'est un avis à chaque fin de chantier : c'est là que le client a le plus envie d'en parler.",0],
+    mois:["Ton dernier avis","Très bien. Une fiche qui vit ça rassure, garde ce rythme.",0]}[a.dernier];
+  if(de)c.push(de);
+  var ph={non:["Tes photos","Avant d'appeler le client n'a que tes photos pour juger ton travail. Sans chantiers sur ta fiche il passe à la suivante.",1],
+    anciennes:["Tes photos","Des photos récentes montrent que tu travailles encore et près de chez lui. Le client cherche un jardin qui ressemble au sien.",0],
+    oui:["Tes photos","Bien. Entre trois fiches qui se ressemblent c'est souvent ce qui fait la différence.",0]}[a.photos];
+  if(ph)c.push(ph);
+  var SO={bao:["Le bouche-à-oreille ramène tes meilleurs clients. Mais il ne remplit pas les mois creux : il tourne avec le nombre de gens de ton secteur qui connaissent ton travail.",0],
+    google:["Ta fiche est déjà ton premier commercial. Chaque avis et chaque photo la rendent plus forte face aux autres.",0],
+    reseaux:["Tes chantiers plaisent. Ce qui manque souvent c'est qu'ils soient vus par les gens de ta commune qui ont un projet et pas seulement par tes abonnés.",0],
+    plateformes:["Une demande de plateforme est souvent envoyée à 4 ou 5 paysagistes. Le client ne sait plus qui est qui donc il compare le prix.",1],
+    pub:["Tu fais déjà de la pub. La vraie question c'est combien te coûte chaque demande et combien tu en signes.",0]};
+  var src=Array.isArray(a.source)?a.source:(a.source?[a.source]:[]);
+  if(src.length){c.push(["Tes clients",src.slice(0,2).map(function(k){return SO[k][0]}).join(" "),src.some(function(k){return SO[k][1]})?1:0])}
+  var ag={complet:["Ton agenda","Tu es complet. Plus de demandes te serviraient surtout à choisir tes chantiers et tes prix.",0],
+    trous:["Ton agenda","Les trous dans l'agenda c'est exactement ce qui se remplit avec des gens de ta commune qui ont déjà vu ton travail.",0],
+    creux:["Ton agenda","Les mois creux c'est souvent le signe que trop peu de gens autour de toi connaissent ton travail. Ça se travaille avant la saison et pas pendant.",1],
+    vide:["Ton agenda","C'est la priorité. Commence par ce qui ne coûte rien : ta fiche et tes avis. C'est là que le client se décide.",1]}[a.agenda];
+  if(ag)c.push(ag);
+  c.push(["Ce que fait ton client","Il tape « paysagiste » et sa commune puis il voit trois fiches. En quelques secondes il compare les étoiles, le nombre d'avis et les photos et il appelle souvent avant même d'avoir vu les autres.",0]);
+  return c;
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(ch){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]})}
+function renderResult(){
+  var f=fit(A),v=$("#sc-verdict");
+  $("#sc-restitle").textContent="Voilà ce que voit ton client"+(prenom?", "+prenom:"")+"..";
+  v.innerHTML={oui:"<strong>Tu as ce qu'il faut pour remplir ton agenda depuis ta commune.</strong> Voilà ce qui joue pour toi et ce qui te fait perdre des appels.",
+    partiel:"<strong>Ça peut marcher pour toi surtout sur tes chantiers de création.</strong> Voilà ce qui joue pour toi et ce qui te fait perdre des appels.",
+    non:"<strong>Honnêtement mon système vise surtout les chantiers de création.</strong> Mais ta fiche compte quand même et voilà ce que voit ton client."}[f];
+  var said=[];if(A.chantier)said.push("un chantier moyen « "+LBL.chantier[A.chantier].toLowerCase()+" »");if(A.agenda)said.push("un agenda « "+LBL.agenda[A.agenda].toLowerCase()+" »");
+  $("#sc-said").textContent=said.length?"Tu m'as dit : "+said.join(" et ")+".":"";
+  $("#sc-cards").innerHTML=cards(A).map(function(c){return '<div class="card'+(c[2]?" alert":"")+'"><span class="tag">'+esc(c[0])+'</span><p>'+esc(c[1])+'</p></div>'}).join("");
+  $("#sc-next").textContent="Je regarde tout ce que voit ton client quand il te cherche et je t'appelle "+CONFIG.DELAI+" pour t'en parler.";
+}
+
+function val(id){return ($("#"+id).value||"").trim()}
+function phoneOk(p){var d=p.replace(/[\s.\-()]/g,"");return /^0[1-9]\d{8}$/.test(d)||/^\+33[1-9]\d{8}$/.test(d)||/^\+(?!33)\d{8,15}$/.test(d)}
+function mark(f,bad){var el=$('.field[data-f="'+f+'"]');if(el)el.classList.toggle("bad",bad);return !bad}
+var started=false;
+$("#sc-form").addEventListener("input",function(){if(!started){started=true;ev("form_start")}});
+$("#sc-form").addEventListener("submit",function(e){
+  e.preventDefault();if(sent)return;
+  var ok=true;
+  ok=mark("prenom",!val("sc-prenom"))&&ok;ok=mark("entreprise",!val("sc-entreprise"))&&ok;ok=mark("ville",!val("sc-ville"))&&ok;
+  ok=mark("telephone",!phoneOk(val("sc-tel")))&&ok;ok=mark("consent",!$("#sc-consent").checked)&&ok;
+  if(!ok){ev("form_error");var first=$(".field.bad input");if(first)first.focus();return}
+  sent=true;prenom=val("sc-prenom");
+  var lead={prenom:prenom,entreprise:val("sc-entreprise"),ville:val("sc-ville"),telephone:val("sc-tel"),website:val("sc-site"),resultat:fit(A)};
+  Q.forEach(function(q){lead["q_"+q.id]=A[q.id]?(Array.isArray(A[q.id])?A[q.id].map(function(k){return LBL[q.id][k]}).join(", "):LBL[q.id][A[q.id]]):""});
+  once["lead|"]=0;ev("lead","","",lead);
+  hist=[];renderResult();show("resultat");ev("result_view");
+});
+
+$("#sc-copy").addEventListener("click",function(){var t=$("#sc-msg").textContent,b=this;ev("copy_message");
+  var ok=function(){b.textContent="Copié";setTimeout(function(){b.textContent="Copier le message"},2000)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,sel)}else sel();
+  function sel(){var r=document.createRange();r.selectNodeContents($("#sc-msg"));var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Texte sélectionné : copie-le"}});
+
+$$("[data-go]").forEach(function(b){b.addEventListener("click",function(){hist.push("accueil");qi=0;renderQ();show("quiz");ev("start")})});
+$("#sc-back").addEventListener("click",function(){var p=hist.pop();if(!p){show("accueil");return}
+  if(p.indexOf("quiz:")===0){qi=parseInt(p.split(":")[1],10)||0;renderQ();show("quiz")}else show(p)});
+
+function openM(id){var m=document.getElementById("m-"+id);if(m){m.classList.add("on");var c=m.querySelector("[data-close]");if(c)c.focus()}}
+$$("[data-modal]").forEach(function(b){b.addEventListener("click",function(e){e.preventDefault();openM(b.getAttribute("data-modal"))})});
+$$(".modal").forEach(function(m){m.addEventListener("click",function(e){if(e.target===m||e.target.hasAttribute("data-close"))m.classList.remove("on")})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$$(".modal.on").forEach(function(m){m.classList.remove("on")})});
+
+var ap=params.get("apercu");
+if(ap){A={activite:"creation",chantier:"3000_6000",avis:"moins10",dernier:"an",photos:"non",source:["bao","plateformes"],agenda:"trous"};
+  var m=/^q([1-7])$/.exec(ap);if(m){qi=+m[1]-1;renderQ();show("quiz")}else if(ap==="form"){show("form")}else if(ap==="resultat"){prenom="Marc";renderResult();show("resultat")}}
+else ev("view");
+})();
+</script></body></html>
