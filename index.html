@@ -134,6 +134,15 @@
 #sc .next-q[disabled]{opacity:.45;cursor:default}
 #sc .foot{margin-top:48px;padding-bottom:calc(56px + env(safe-area-inset-bottom))}
 #sc .mephoto{display:block;width:100%;aspect-ratio:770/550;object-fit:cover;border-radius:14px;margin:16px 0 18px}
+
+#sc .rh{margin-top:28px;font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--soft)}
+#sc .rh+.cards{margin-top:12px}
+#sc [hidden]{display:none!important}
+#sc .prio{margin-top:22px;background:var(--green-tint);border:1px solid #CFE0D5;border-radius:16px;padding:18px}
+#sc .prio .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+#sc .prio p{color:var(--ink);font-size:16px;font-weight:600}
+#sc .gap{margin-top:28px;background:var(--card);border:1px dashed var(--green);border-radius:16px;padding:18px}
+#sc .gap p{color:var(--soft);margin-top:6px;font-size:16px}
 </style></head>
 <body><div id="sc">
 <div class="wrap">
@@ -194,7 +203,10 @@
     <h2 tabindex="-1" id="sc-restitle"></h2>
     <p class="said" id="sc-said"></p>
     <p class="verdict" id="sc-verdict"></p>
-    <div class="cards" id="sc-cards"></div>
+    <div id="sc-badwrap"><h3 class="rh">Ce qui te fait perdre des appels</h3><div class="cards" id="sc-cards-bad"></div></div>
+    <div class="prio" id="sc-priowrap"><span class="tag">Ta priorité cette semaine</span><p id="sc-prio"></p></div>
+    <div id="sc-goodwrap"><h3 class="rh">Ce qui joue pour toi</h3><div class="cards" id="sc-cards-good"></div></div>
+    <div class="gap"><h3>Ce que tes réponses ne me disent pas</h3><p id="sc-gap"></p></div>
     <div class="next">
       <h3>La suite</h3>
       <p id="sc-next"></p>
@@ -252,7 +264,7 @@ var Q=[
  {id:"agenda",t:"En ce moment ton agenda…",o:[["complet","Complet pour plusieurs mois"],["trous","Ça va mais avec des trous"],["creux","Des mois creux qui reviennent"],["vide","Pas assez rempli"]]}
 ];
 var LBL={};Q.forEach(function(q){LBL[q.id]={};q.o.forEach(function(o){LBL[q.id][o[0]]=o[1]})});
-var A={},qi=0,hist=[],sent=false,cur="accueil",prenom="";
+var A={},qi=0,hist=[],sent=false,cur="accueil",prenom="",ville="";
 
 // ---- suivi anonyme (sans cookie) ----
 var params=new URLSearchParams(location.search);
@@ -325,7 +337,7 @@ function cards(a){
     mois:["Ton dernier avis","Très bien. Une fiche qui vit ça rassure, garde ce rythme.",0]}[a.dernier];
   if(de)c.push(de);
   var ph={non:["Tes photos","Avant d'appeler le client n'a que tes photos pour juger ton travail. Sans chantiers sur ta fiche il passe à la suivante.",1],
-    anciennes:["Tes photos","Des photos récentes montrent que tu travailles encore et près de chez lui. Le client cherche un jardin qui ressemble au sien.",0],
+    anciennes:["Tes photos","Des photos récentes montrent que tu travailles encore et près de chez lui. Le client cherche un jardin qui ressemble au sien.",1],
     oui:["Tes photos","Bien. Entre trois fiches qui se ressemblent c'est souvent ce qui fait la différence.",0]}[a.photos];
   if(ph)c.push(ph);
   var SO={bao:["Le bouche-à-oreille ramène tes meilleurs clients. Mais il ne remplit pas les mois creux : il tourne avec le nombre de gens de ton secteur qui connaissent ton travail.",0],
@@ -340,20 +352,36 @@ function cards(a){
     creux:["Ton agenda","Les mois creux c'est souvent le signe que trop peu de gens autour de toi connaissent ton travail. Ça se travaille avant la saison et pas pendant.",1],
     vide:["Ton agenda","C'est la priorité. Commence par ce qui ne coûte rien : ta fiche et tes avis. C'est là que le client se décide.",1]}[a.agenda];
   if(ag)c.push(ag);
-  c.push(["Ce que fait ton client","Il tape « paysagiste » et sa commune puis il voit trois fiches. En quelques secondes il compare les étoiles, le nombre d'avis et les photos et il appelle souvent avant même d'avoir vu les autres.",0]);
   return c;
+}
+function prio(a){
+  var avis="À la fin de ton prochain chantier demande un avis sur place et envoie le lien par SMS dans la foulée. Et envoie le message plus bas à un ou deux anciens clients contents.";
+  if(a.avis==="sansfiche")return "Crée ta fiche Google. C'est gratuit et 20 minutes suffisent : la catégorie « Paysagiste », les communes où tu travailles et 5 photos de tes plus beaux chantiers.";
+  if(a.note==="moins4")return "Réponds calmement à chacun de tes avis négatifs. Celui qui hésite lit ta réponse autant que l'avis. Puis un avis demandé à chaque fin de chantier.";
+  if(a.avis==="moins10"||a.dernier==="an")return avis;
+  if(a.photos==="non")return "Ajoute une dizaine de photos de tes plus beaux chantiers sur ta fiche, en plein jour et en plan large. C'est ce que le client regarde juste après les étoiles.";
+  if(a.note==="40")return avis;
+  if(a.photos==="anciennes")return "Ajoute les photos de tes derniers chantiers sur ta fiche. Le client veut voir que tu travailles encore et près de chez lui.";
+  if(a.agenda==="creux"||a.agenda==="vide")return "Ta fiche et tes avis d'abord : c'est gratuit et c'est là que le client se décide.";
+  return "";
 }
 function esc(s){return String(s).replace(/[&<>"]/g,function(ch){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]})}
 function renderResult(){
   var f=fit(A),v=$("#sc-verdict");
-  $("#sc-restitle").textContent="Voilà ce que voit ton client"+(prenom?", "+prenom:"")+"..";
+  $("#sc-restitle").textContent=(prenom?prenom+", voilà":"Voilà")+" ce qui te fait perdre des appels..";
   v.innerHTML={oui:"<strong>Tu as ce qu'il faut pour remplir ton agenda depuis ta commune.</strong> Voilà ce qui joue pour toi et ce qui te fait perdre des appels.",
     partiel:"<strong>Ça peut marcher pour toi surtout sur tes chantiers de création.</strong> Voilà ce qui joue pour toi et ce qui te fait perdre des appels.",
     non:"<strong>Honnêtement mon système vise surtout les chantiers de création.</strong> Mais ta fiche compte quand même et voilà ce que voit ton client."}[f];
   var said=[];if(A.chantier)said.push("un chantier moyen « "+LBL.chantier[A.chantier].toLowerCase()+" »");if(A.agenda)said.push("un agenda « "+LBL.agenda[A.agenda].toLowerCase()+" »");
   $("#sc-said").textContent=said.length?"Tu m'as dit : "+said.join(" et ")+".":"";
-  $("#sc-cards").innerHTML=cards(A).map(function(c){return '<div class="card'+(c[2]?" alert":"")+'"><span class="tag">'+esc(c[0])+'</span><p>'+esc(c[1])+'</p></div>'}).join("");
-  $("#sc-next").textContent="Je regarde tout ce que voit ton client quand il te cherche et je t'appelle "+CONFIG.DELAI+" pour t'en parler.";
+  var C=cards(A),card=function(c){return '<div class="card'+(c[2]?" alert":"")+'"><span class="tag">'+esc(c[0])+'</span><p>'+esc(c[1])+'</p></div>'};
+  var bad=C.filter(function(c){return c[2]}).slice(0,3),good=C.filter(function(c){return !c[2]});
+  $("#sc-cards-bad").innerHTML=bad.map(card).join("");$("#sc-badwrap").hidden=!bad.length;
+  $("#sc-cards-good").innerHTML=good.map(card).join("");$("#sc-goodwrap").hidden=!good.length;
+  var pr=prio(A);$("#sc-prio").textContent=pr;$("#sc-priowrap").hidden=!pr;
+  var ou=ville||"ta commune";
+  $("#sc-gap").textContent="Quand quelqu'un de "+ou+" tape « paysagiste » il voit trois fiches. Est-ce que la tienne en fait partie, face à qui et avec combien d'avis ? Ça tes réponses ne me le disent pas. Je le regarde moi-même avant de t'appeler.";
+  $("#sc-next").textContent="Je t'appelle "+CONFIG.DELAI+", 10 minutes. Je te dis où tu sors à "+ou+", face à qui, et ce que je ferais en premier à ta place. Et si ça ne vaut pas le coup pour toi je te le dis aussi.";
 }
 
 function val(id){return ($("#"+id).value||"").trim()}
@@ -367,7 +395,7 @@ $("#sc-form").addEventListener("submit",function(e){
   ok=mark("prenom",!val("sc-prenom"))&&ok;ok=mark("entreprise",!val("sc-entreprise"))&&ok;ok=mark("ville",!val("sc-ville"))&&ok;
   ok=mark("telephone",!phoneOk(val("sc-tel")))&&ok;ok=mark("consent",!$("#sc-consent").checked)&&ok;
   if(!ok){ev("form_error");var first=$(".field.bad input");if(first)first.focus();return}
-  sent=true;prenom=val("sc-prenom");
+  sent=true;prenom=val("sc-prenom");ville=val("sc-ville");
   var lead={prenom:prenom,entreprise:val("sc-entreprise"),ville:val("sc-ville"),telephone:val("sc-tel"),website:val("sc-site"),resultat:fit(A)};
   Q.forEach(function(q){lead["q_"+q.id]=A[q.id]?(Array.isArray(A[q.id])?A[q.id].map(function(k){return LBL[q.id][k]}).join(", "):LBL[q.id][A[q.id]]):""});
   once["lead|"]=0;ev("lead","","",lead);
