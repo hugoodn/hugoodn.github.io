@@ -380,7 +380,8 @@ function renderResult(){
   $("#sc-cards-good").innerHTML=good.map(card).join("");$("#sc-goodwrap").hidden=!good.length;
   var pr=prio(A);$("#sc-prio").textContent=pr;$("#sc-priowrap").hidden=!pr;
   var ou=ville||"ta commune";
-  $("#sc-gap").textContent="Quand quelqu'un de "+ou+" tape « paysagiste » il voit trois fiches. Est-ce que la tienne en fait partie, face à qui et avec combien d'avis ? Ça tes réponses ne me le disent pas. Je le regarde moi-même avant de t'appeler.";
+  var dde=ville?(/^[aeiouyhâàéèêîïôûAEIOUYHÂÀÉÈÊÎÏÔÛ]/.test(ville)?"d'"+ville:"de "+ville):"de ta commune";
+  $("#sc-gap").textContent="Quand quelqu'un "+dde+" cherche « paysagiste » sur Google, il voit d'abord trois fiches sur la carte. Est-ce que la tienne en fait partie, face à qui et avec combien d'avis ? Ça tes réponses ne me le disent pas. Je le regarde moi-même avant de t'appeler.";
   $("#sc-next").textContent="Je t'appelle "+CONFIG.DELAI+", 10 minutes. Je te dis où tu sors à "+ou+", face à qui, et ce que je ferais en premier à ta place. Et si ça ne vaut pas le coup pour toi je te le dis aussi.";
 }
 
