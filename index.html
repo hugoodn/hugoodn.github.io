@@ -355,7 +355,7 @@ function cards(a){
   return c;
 }
 function prio(a){
-  var avis="Tu le sais sûrement déjà mais pense vraiment à le faire : un avis demandé à chaque fin de chantier, sur place, avec le lien envoyé par SMS dans la foulée. C'est l'habitude qui fait le plus grandir ta fiche. Et envoie le message plus bas à un ou deux anciens clients contents qui n'ont pas encore laissé d'avis.";
+  var avis="Tu le sais sûrement déjà mais le meilleur moment pour demander un avis c'est à la fin du chantier. Ton client découvre le résultat et il est content donc demande-lui directement sur place et envoie-lui le lien par SMS juste après. Et pour tes anciens clients contents qui n'ont pas encore laissé d'avis envoie-leur le message juste en dessous.";
   if(a.avis==="sansfiche")return "Crée ta fiche Google. C'est gratuit et 20 minutes suffisent : la catégorie « Paysagiste », les communes où tu travailles et 5 photos de tes plus beaux chantiers.";
   if(a.note==="moins4")return "Réponds calmement à chacun de tes avis négatifs. Celui qui hésite lit ta réponse autant que l'avis. Puis un avis demandé à chaque fin de chantier.";
   if(a.avis==="moins10"||a.dernier==="an")return avis;
