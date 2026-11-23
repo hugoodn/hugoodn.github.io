@@ -382,7 +382,7 @@ function renderResult(){
   var ou=ville||"ta commune";
   var dde=ville?(/^[aeiouyhâàéèêîïôûAEIOUYHÂÀÉÈÊÎÏÔÛ]/.test(ville)?"d'"+ville:"de "+ville):"de ta commune";
   $("#sc-gap").textContent="Quand quelqu'un "+dde+" cherche « paysagiste » sur Google il tombe sur une liste de paysagistes. Est-ce que tu sors en haut, face à qui et avec combien d'avis ? Et est-ce que d'autres paysagistes paient pour passer devant ? Ça tes réponses ne me le disent pas. Je le regarde moi-même avant de t'appeler.";
-  $("#sc-next").textContent="Je t'appelle "+CONFIG.DELAI+" pour 2 minutes. Je te dis ce que je ferais en premier à ta place. Et si tu veux on cale un moment pour voir si on peut travailler ensemble : je t'explique comment je remplis l'agenda des paysagistes. Si ça ne vaut pas le coup pour toi je te le dis aussi.";
+  $("#sc-next").textContent="Je t'appelle 2 minutes "+CONFIG.DELAI+". Je te dis ce que j'ai vu sur ta fiche et autour de chez toi et ce que je ferais en premier à ta place. Et si ça ne vaut pas le coup pour toi je te le dis aussi.";
 }
 
 function val(id){return ($("#"+id).value||"").trim()}
